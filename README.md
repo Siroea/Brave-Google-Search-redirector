@@ -31,7 +31,7 @@ If you cannot install the `.crx` file:
    ![Select Yahoo! Japan](Yahoo!-Japan.png)
 
 ## Additional Information
-* **Microsoft Edge Support:** It has been confirmed that this extension also works on **Microsoft Edge** to bypass default Bing searches. (Set the default search engine to Yahoo! Japan in Edge settings as well, and install via `edge://extensions/`.)
+* **Microsoft Edge Support:** It has been confirmed that this extension also works on **Microsoft Edge** to bypass default Bing searches. (Set the default search engine to Bing or Yahoo! Japan in Edge settings as well, and install via `edge://extensions/`.)
 
 ## Note
 * This extension was created using AI.
