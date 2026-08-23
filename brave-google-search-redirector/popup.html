@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brave Google Search Redirector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header-bar">
+    <div class="google-line"></div>
+    <div class="title-container">
+      <div class="icon-badge">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.35 11.1H12V13.8H17.38C16.85 16.5 14.52 18 12 18C8.69 18 6 15.31 6 12C6 8.69 8.69 6 12 6C13.56 6 14.97 6.6 16 7.58L18.15 5.43C16.52 3.91 14.37 3 12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C17.38 21 21.6 16.97 21.35 11.1Z" fill="url(#g-grad)"/>
+          <defs>
+            <linearGradient id="g-grad" x1="3" y1="3" x2="21.35" y2="21" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#4285F4"/>
+              <stop offset="0.33" stop-color="#EA4335"/>
+              <stop offset="0.66" stop-color="#FBBC05"/>
+              <stop offset="1" stop-color="#34A853"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div>
+        <h1 class="app-title">Google Redirector</h1>
+        <p class="app-subtitle">Brave 検索自動転送</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Master Toggle Card -->
+    <div class="card status-card">
+      <div class="status-info">
+        <div class="status-indicator" id="status-dot"></div>
+        <div>
+          <span class="status-label" id="status-label">機能有効化中</span>
+          <p class="status-desc" id="status-desc">Yahoo!などの検索をGoogleへ強制転送します</p>
+        </div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="master-toggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Quick Search Box -->
+    <div class="card">
+      <label class="card-label">⚡ テスト検索（Google直接検索）</label>
+      <form id="search-form" class="search-form">
+        <input type="text" id="search-input" placeholder="Googleで検索するキーワード..." required />
+        <button type="submit" id="search-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- Settings Card -->
+    <div class="card">
+      <label class="card-label">⚙️ 転送設定</label>
+      
+      <div class="setting-row">
+        <span class="setting-text">転送先Googleドメイン</span>
+        <select id="domain-select" class="select-input">
+          <option value="google.co.jp">Google Japan (.co.jp)</option>
+          <option value="google.com">Google Global (.com)</option>
+        </select>
+      </div>
+
+      <div class="setting-row">
+        <span class="setting-text">Yahoo! 検索を転送</span>
+        <input type="checkbox" id="intercept-yahoo" checked class="checkbox-input" />
+      </div>
+
+      <div class="setting-row">
+        <span class="setting-text">Bing 検索を転送</span>
+        <input type="checkbox" id="intercept-bing" checked class="checkbox-input" />
+      </div>
+    </div>
+
+    <!-- Stats Card -->
+    <div class="card stats-card">
+      <div class="stats-icon">📊</div>
+      <div class="stats-text">
+        <span class="stats-count" id="redirect-count">0</span>
+        <span class="stats-unit">回の検索をGoogleへ転送済み</span>
+      </div>
+      <button id="reset-stats-btn" class="icon-button" title="カウントをリセット">🔄</button>
+    </div>
+
+    <!-- Usage Guide Accordion -->
+    <details class="guide-accordion">
+      <summary class="guide-summary">💡 Braveでの使い方・ヒント</summary>
+      <div class="guide-content">
+        <ol>
+          <li>アドレスバーから検索を実行すると、自動的にGoogle検索結果へリダイレクトされます。</li>
+          <li>アドレスバーで <code>g キーワード</code> と打ち込むと、直接Google検索できます（Omnibox機能）。</li>
+          <li>Yahoo!のトップページ自体は通常通り閲覧可能です。検索実行時のみ転送されます。</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
